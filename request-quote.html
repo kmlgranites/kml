@@ -197,6 +197,13 @@
                   </button>
                 </div><!-- /.request-panel-banner-inner -->
               </div><!-- /.request-panel-banner -->
+              <?php
+    if (!empty($thank_you_message)) {
+        echo '<p style="color: green;">' . $thank_you_message . '</p>';
+    } elseif (!empty($error_message)) {
+        echo '<p style="color: red;">' . $error_message . '</p>';
+    }
+    ?>
        <form action="request-quote.php" method="POST">
               <div class="request__form mb-0">
                 <div class="request__form-body">

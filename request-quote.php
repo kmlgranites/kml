@@ -1,5 +1,9 @@
 <?php
+$thank_you_message = "";
+$error_message = "";
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Process the form submission
     $name = $_POST["name"];
     $email = $_POST["email"];
     $phone = $_POST["phone"];
@@ -24,12 +28,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Send the email
     if (mail($to, $email_subject, $email_body, $headers)) {
-        // If the email is sent successfully, redirect to a thank-you page
-        header("Location: thank_you.php");
-        exit();
+        // Set the thank-you message
+        $thank_you_message = "Thank you for your message! We have received your submission.";
     } else {
-        // If there's an error in sending the email, display an error message
-        echo "Oops! Something went wrong. Please try again later.";
+        // Set the error message
+        $error_message = "Oops! Something went wrong. Please try again later.";
     }
 }
 ?>
